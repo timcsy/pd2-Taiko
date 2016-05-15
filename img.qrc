@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/blank_note.png</file>
+        <file>img/blue_big_note.png</file>
+        <file>img/blue_small_note.png</file>
+        <file>img/red_big_note.png</file>
+        <file>img/red_small_note.png</file>
+        <file>img/fail_result.png</file>
+        <file>img/success_result.png</file>
+        <file>img/bg.png</file>
+        <file>img/start_bc.jpg</file>
+        <file>img/fail_hit.png</file>
+        <file>img/ok_hit.png</file>
+        <file>img/success_hit.png</file>
+        <file>img/Left.gif</file>
+        <file>img/Right.gif</file>
+        <file>img/HaWay.mp3</file>
+        <file>img/mtaiko.png</file>
+        <file>record.txt</file>
+        <file>recordnote.txt</file>
+    </qresource>
+</RCC>
