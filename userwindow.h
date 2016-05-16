@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QLabel>
 #include "drum.h"
+#include "mainwindow.h"
 
 namespace Ui {
 class UserWindow;
@@ -14,12 +15,13 @@ class UserWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit UserWindow(QWidget *parent = 0);
+    explicit UserWindow(MainWindow *_callparent = 0, QWidget *parent = 0);
     ~UserWindow();
     QLabel *RGIFLabel;
     QMovie *Rmovie;
     QLabel *LGIFLabel;
     QMovie *Lmovie;
+    MainWindow *callparent;
 
 public slots:
 signals:

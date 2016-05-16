@@ -1,5 +1,4 @@
 #include "record.h"
-#include <QTextStream>
 #include <QChar>
 #include <QLabel>
 #include <QKeyEvent>
@@ -7,9 +6,16 @@
 Record::Record(QWidget *parent) : QWidget(parent)
 {
     time = new QTime();
-    file = new QFile(":/record.txt");
-    if (!file->open(QIODevice::WriteOnly | QIODevice::Text))
+    file = new QFile("D:\QT\pd2-Taiko\pd2-Taiko\record.txt");
+    if(!file->open(QIODevice::WriteOnly | QIODevice::Text))
         return;
+}
+
+Record::~Record()
+{
+    delete time;
+    file->close();
+    delete file;
 }
 
 void Record::start()
@@ -19,9 +25,9 @@ void Record::start()
 
 void Record::keyPressEvent(QKeyEvent *e)
 {
-    QTextStream fout(file);
-    fout << time->elapsed() << "\n";
-    fout << e->key() << " ";
+    fout = new QTextStream(file);
+    (*fout) << time->elapsed() << "\n";
+    (*fout) << e->key() << " ";
     time->restart();
 }
 

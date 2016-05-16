@@ -6,12 +6,14 @@
 #include "drum.h"
 #include <QMediaPlayer>
 #include "record.h"
+#include "userwindow.h"
 
 class DrumSet : public QWidget
 {
     Q_OBJECT
 public:
-    explicit DrumSet(QWidget *parent = 0, QWidget *_callparent = 0, QLabel *_RLabel = 0, QLabel *_LLabel = 0, QMovie *_RMovie = 0, QMovie *_LMovie = 0, int _Speed = 1000, QLabel *_TimeText = 0, QLabel * _ScoreText = 0);
+    explicit DrumSet(QWidget *parent = 0, UserWindow *_callparent = 0, QLabel *_RLabel = 0, QLabel *_LLabel = 0, QMovie *_RMovie = 0, QMovie *_LMovie = 0, int _Speed = 1000, QLabel *_TimeText = 0, QLabel * _ScoreText = 0);
+    ~DrumSet();
     void gamestart();
     void addDrum();
     void addDrumByBeat();
@@ -27,7 +29,7 @@ public slots:
     void keyPressEvent(QKeyEvent *e);
     void changeTime();
 protected:
-    QWidget *callparent;
+    UserWindow *callparent;
     QLabel *RLabel;
     QLabel *LLabel;
     QMovie *RMovie;

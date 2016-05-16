@@ -5,7 +5,7 @@
 #include <QTextStream>
 #include <QChar>
 
-DrumSet::DrumSet(QWidget *parent, QWidget *_callparent, QLabel *_RLabel, QLabel *_LLabel, QMovie *_RMovie, QMovie *_LMovie, int _Speed, QLabel *_TimeText, QLabel *_ScoreText) :
+DrumSet::DrumSet(QWidget *parent, UserWindow *_callparent, QLabel *_RLabel, QLabel *_LLabel, QMovie *_RMovie, QMovie *_LMovie, int _Speed, QLabel *_TimeText, QLabel *_ScoreText) :
     QWidget(parent),callparent(_callparent),RLabel(_RLabel),LLabel(_LLabel),RMovie(_RMovie),LMovie(_LMovie),Speed(_Speed),TimeText(_TimeText),ScoreText(_ScoreText)
 {
     N = 0;
@@ -25,6 +25,14 @@ DrumSet::DrumSet(QWidget *parent, QWidget *_callparent, QLabel *_RLabel, QLabel 
     player->setMedia(QUrl("qrc:/img/HaWay.mp3"));
     player->setVolume(100);
     r = new Record;
+}
+
+DrumSet::~DrumSet()
+{
+    delete textTimer;
+    delete DelayTimer;
+    delete player;
+    delete r;
 }
 
 void DrumSet::gamestart()
@@ -185,11 +193,11 @@ void DrumSet::changeTime()
     if(Time <= 0)
     {
         disconnect(textTimer, SIGNAL(timeout()), this, SLOT(changeTime()));
-        ResultWindow * rw = new ResultWindow(Score);
-        rw->show();
         callparent->hide();
         player->stop();
         delete player; player = 0;
+        ResultWindow * rw = new ResultWindow(Score,callparent);
+        rw->show();
     }
 }
 

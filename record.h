@@ -4,12 +4,14 @@
 #include <QWidget>
 #include <QTime>
 #include <QFile>
+#include <QTextStream>
 
 class Record : public QWidget
 {
     Q_OBJECT
 public:
     explicit Record(QWidget *parent = 0);
+    ~Record();
     void start();
 
 signals:
@@ -19,6 +21,8 @@ public slots:
 private:
     QTime *time;
     QFile *file;
+    QTextStream *fout;
+
 };
 
 #endif // RECORD_H

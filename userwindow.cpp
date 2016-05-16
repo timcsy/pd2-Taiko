@@ -3,8 +3,8 @@
 #include "drumset.h"
 #include <QMediaPlayer>
 
-UserWindow::UserWindow(QWidget *parent) :
-    QMainWindow(parent),
+UserWindow::UserWindow(MainWindow *_callparent, QWidget *parent) :
+    QMainWindow(parent),callparent(_callparent),
     ui(new Ui::UserWindow)
 {
     ui->setupUi(this);
@@ -32,5 +32,10 @@ UserWindow::UserWindow(QWidget *parent) :
 
 UserWindow::~UserWindow()
 {
+
+    delete Rmovie;
+    delete RGIFLabel;
+    delete Lmovie;
+    delete LGIFLabel;
     delete ui;
 }

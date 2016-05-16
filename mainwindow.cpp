@@ -17,7 +17,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    UserWindow * uw = new UserWindow();
+    UserWindow * uw = new UserWindow(this);
     uw->show();
     this->hide();
 }

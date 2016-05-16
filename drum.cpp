@@ -26,6 +26,7 @@ Drum::~Drum()
     delete p;
     delete picture;
     delete result;
+
     delete timer;
 }
 
