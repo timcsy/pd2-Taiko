@@ -6,7 +6,7 @@
 Record::Record(QWidget *parent) : QWidget(parent)
 {
     time = new QTime();
-    file = new QFile("D:\QT\pd2-Taiko\pd2-Taiko\record.txt");
+    file = new QFile("D:\\QT\\pd2-Taiko\\pd2-Taiko\\record.txt");
     if(!file->open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 }
@@ -25,9 +25,9 @@ void Record::start()
 
 void Record::keyPressEvent(QKeyEvent *e)
 {
-    fout = new QTextStream(file);
-    (*fout) << time->elapsed() << "\n";
-    (*fout) << e->key() << " ";
+    QTextStream fout(file);
+    fout << time->elapsed() << "\n";
+    fout << e->key() << " ";
     time->restart();
 }
 
